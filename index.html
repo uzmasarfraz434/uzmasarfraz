@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uzma Sarfraz | Professional Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Fugaz One:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme */
+            --primary-light: #4361ee;
+            --secondary-light: #3a0ca3;
+            --accent-light: #f72585;
+            --bg-light: #f8f9fa;
+            --text-light: #212529;
+            --card-light: #ffffff;
+            --nav-light: rgba(255, 255, 255, 0.96);
+            --gradient-light: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+         
+            /* Dark Theme */
+            --primary-dark: #4895ef;
+            --secondary-dark: #b5179e;
+            --accent-dark: #f72585;
+            --bg-dark: #121212;
+            --text-dark: #e9ecef;
+            --card-dark: #1e1e1e;
+            --nav-dark: rgba(30, 30, 30, 0.96);
+            --gradient-dark: linear-gradient(135deg, #4895ef 0%, #b5179e 100%);
+         
+            /* Active Theme */
+            --primary: var(--primary-light);
+            --secondary: var(--secondary-light);
+            --accent: var(--accent-light);
+            --bg: var(--bg-light);
+            --text: var(--text-light);
+            --card: var(--card-light);
+            --nav: var(--nav-light);
+            --gradient: var(--gradient-light);
+         
+            /* Transitions */
+            --transition-speed: 0.5s;
+            --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+     
+        [data-theme="dark"] {
+            --primary: var(--primary-dark);
+            --secondary: var(--secondary-dark);
+            --accent: var(--accent-dark);
+            --bg: var(--bg-dark);
+            --text: var(--text-dark);
+            --card: var(--card-dark);
+            --nav: var(--nav-dark);
+            --gradient: var(--gradient-dark);
+        }
+     
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* Remove touch highlight */
+        }
+     
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+     
+        /* Enhanced Smooth Scroll Animation */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Account for fixed header */
+        }
+     
+        /* 🔹 Common Navbar Container */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--nav);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-speed) var(--ease-out-quint);
+        }
+
+        /* 🔹 Navbar Inner Layout */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* 🔹 Logo */
+        .logo {
+            font-family: 'Fugaz One', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            transition: transform 0.3s var(--ease-out-quint);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* 🔹 Navigation Links (PC) */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            opacity: 0.9;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.4s var(--ease-out-quint);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 🔹 Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            background-color: var(--card);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all var(--transition-speed) var(--ease-out-quint);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 🔹 Hamburger Icon (Mobile Only) */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
+
+        /* 🔹 Mobile Navigation (Improved Slim Version) */
+        .mobile-nav {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: var(--nav);
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.8rem;
+            padding: 1.5rem 0;
+            transition: transform 0.4s ease;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            opacity: 0.9;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .mobile-nav a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .mobile-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.4s var(--ease-out-quint);
+        }
+
+        .mobile-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+     
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding-top: 5rem;
+        }
+     
+        .hero-text {
+            flex: 1;
+            padding-right: 3rem;
+            animation: fadeInUp 1s var(--ease-out-quint) forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+     
+        .hero-text h1 {
+            font-family: 'Fugaz One', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+     
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            max-width: 600px;
+            font-weight: 300;
+        }
+     
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+     
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-speed) var(--ease-out-quint);
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            position: relative;
+            overflow: hidden;
+        }
+     
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+     
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+     
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+     
+        .btn-primary:hover {
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+     
+        .btn-outline:hover {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+     
+        /* Enhanced touch feedback for mobile */
+        .btn:active {
+            transform: scale(0.96);
+            transition: transform 0.1s ease;
+        }
+     
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            animation: fadeIn 1s var(--ease-out-quint) forwards;
+            opacity: 0;
+            animation-delay: 0.6s;
+        }
+     
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transition: transform 0.5s var(--ease-out-quint);
+        }
+     
+        .hero-image-container:hover {
+            transform: translateY(-5px);
+        }
+     
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--ease-out-quint);
+        }
+     
+        .hero-image-container:hover img {
+            transform: scale(1.03);
+        }
+
+        /* About Section - Upgraded */
+        .section {
+            padding: 8rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+     
+        .section-title {
+            font-family: 'Fugaz One', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-quint);
+        }
+     
+        .section-title.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+     
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 5px;
+        }
+     
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+        }
+     
+        /* Upgraded About Me Overlay */
+        .about-text {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-quint) 0.1s;
+            background-color: var(--card);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+     
+        .about-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.05;
+            z-index: -1;
+        }
+     
+        .about-text.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+     
+        .about-text h3 {
+            font-family: 'Fugaz One', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+     
+        .about-text p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+     
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+     
+        .skill {
+            background: var(--gradient);
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+     
+        /* Enhanced touch feedback for skills */
+        .skill:active {
+            transform: scale(0.95);
+        }
+     
+        .skill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+        }
+     
+        /* Experience Section */
+        .experience-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+     
+        .experience-item {
+            background-color: var(--card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all var(--transition-speed) var(--ease-out-quint);
+            border-left: 5px solid var(--primary);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-quint);
+        }
+     
+        .experience-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+     
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+     
+        /* Enhanced touch feedback */
+        .experience-item:active {
+            transform: scale(0.98);
+        }
+     
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+     
+        .experience-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+     
+        .experience-date {
+            color: var(--secondary);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+     
+        .experience-company {
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+     
+        .experience-description {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+     
+        /* Projects Section with Enhanced Card Transitions */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+     
+        .project-card {
+            background-color: var(--card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all var(--transition-speed) var(--ease-out-quint);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-quint);
+            position: relative;
+        }
+     
+        .project-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+     
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+     
+        /* Enhanced touch feedback for project cards */
+        .project-card:active {
+            transform: scale(0.98);
+        }
+     
+        /* Smooth card reveal animation */
+        .project-card:nth-child(1) { transition-delay: 0.1s; }
+        .project-card:nth-child(2) { transition-delay: 0.2s; }
+        .project-card:nth-child(3) { transition-delay: 0.3s; }
+     
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+        }
+     
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--ease-out-quint);
+        }
+     
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+     
+        .project-content {
+            padding: 2rem;
+        }
+     
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+     
+        .project-description {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+     
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+     
+        .project-tag {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+        }
+     
+        .project-tag:hover {
+            transform: translateY(-2px);
+            background-color: var(--primary);
+            color: white;
+        }
+     
+        /* Enhanced touch feedback for tags */
+        .project-tag:active {
+            transform: scale(0.95);
+        }
+     
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+     
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+        }
+     
+        .project-link:hover {
+            color: var(--accent);
+        }
+     
+        .project-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s var(--ease-out-quint);
+        }
+     
+        .project-link:hover::after {
+            width: 100%;
+        }
+     
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+     
+        .contact-info {
+            flex: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-quint);
+        }
+     
+        .contact-info.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+     
+        .contact-card {
+            background-color: var(--card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+            transition: all var(--transition-speed) var(--ease-out-quint);
+        }
+     
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+     
+        /* Enhanced touch feedback */
+        .contact-card:active {
+            transform: scale(0.98);
+        }
+     
+        .contact-card h3 {
+            font-family: 'Fugaz One', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+     
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+     
+        .contact-icon {
+            font-size: 1.3rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+     
+        .contact-item:hover .contact-icon {
+            transform: scale(1.2);
+        }
+     
+        .contact-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+     
+        .contact-text a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+        }
+     
+        .contact-text a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: width 0.3s var(--ease-out-quint);
+        }
+     
+        .contact-text a:hover {
+            color: var(--primary);
+        }
+     
+        .contact-text a:hover::after {
+            width: 100%;
+        }
+     
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+        }
+     
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-speed) var(--ease-out-quint);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+     
+        .social-link:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+        }
+     
+        /* Enhanced touch feedback */
+        .social-link:active {
+            transform: scale(0.95);
+        }
+     
+        .contact-form {
+            flex: 1;
+            background-color: var(--card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all var(--transition-speed) var(--ease-out-quint);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s var(--ease-out-quint) 0.2s;
+        }
+     
+        .contact-form.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+     
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+     
+        /* Enhanced touch feedback */
+        .contact-form:active {
+            transform: scale(0.99);
+        }
+     
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+     
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+     
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(67, 97, 238, 0.2);
+            border-radius: 8px;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+     
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+     
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+     
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed) var(--ease-out-quint);
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+     
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+     
+        /* Enhanced touch feedback */
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+     
+        /* Form input animation */
+        .form-group:focus-within label {
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+     
+        /* Footer */
+        footer {
+            background-color: var(--card);
+            padding: 5rem 5% 3rem;
+            text-align: center;
+        }
+     
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+     
+        .footer-logo {
+            font-family: 'Fugaz One', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+     
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+     
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+     
+        .footer-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+        }
+     
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s var(--ease-out-quint);
+        }
+     
+        .footer-link:hover {
+            color: var(--primary);
+        }
+     
+        .footer-link:hover::after {
+            width: 100%;
+        }
+     
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+     
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+     
+        .developer-credit {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+     
+        .developer-credit a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+        }
+     
+        .developer-credit a:hover {
+            color: var(--accent);
+        }
+     
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+     
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+     
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+            }
+        }
+     
+        @keyframes clickly {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+     
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content, .about-content, .contact-container {
+                flex-direction: column;
+            }
+         
+            .hero-text, .about-text, .contact-info, .contact-form {
+                padding-right: 0;
+                margin-bottom: 4rem;
+                width: 100%;
+            }
+         
+            .hero-image, .about-image {
+                width: 100%;
+            }
+         
+            .hero-image-container, .about-image-container {
+                max-width: 100%;
+            }
+        }
+     
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+         
+            .hamburger {
+                display: block;
+            }
+         
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+         
+            .hero-text h1 {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+            }
+         
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+        }
+     
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+         
+            .btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+         
+            .footer-links {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+         
+            .experience-item, .contact-card, .contact-form {
+                padding: 1.8rem;
+            }
+         
+            .hero-image-container {
+                height: 400px;
+            }
+        }
+     
+        @media (max-width: 576px) {
+            .section {
+                padding: 6rem 5%;
+            }
+         
+            .hero-content {
+                padding-top: 7rem;
+            }
+         
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+         
+            .about-content, .contact-container {
+                gap: 2.5rem;
+            }
+         
+            .section-title {
+                margin-bottom: 3rem;
+            }
+         
+            .experience-item, .contact-card, .contact-form {
+                padding: 1.5rem;
+            }
+         
+            .hero-image-container {
+                height: 350px;
+            }
+         
+            /* Remove about image on mobile */
+            .about-image {
+                display: none;
+            }
+         
+            .about-text {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">Uzma Sarfraz</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>I'm Uzma Sarfraz</h1>
+                <p>A passionate professional with expertise in strategic planning, project management, and team leadership. Dedicated to delivering exceptional results through innovative solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-outline">
+                        <i class="fas fa-eye"></i>
+                        View My Work
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <img src="https://images.unsplash.com/photo-1627378228978-a62f71edff15?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Uzma Sarfraz">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Upgraded -->
+    <section class="section" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Professional Profile</h3>
+                <p>I am a dedicated professional with over 8 years of experience in strategic planning and project management. My journey has been marked by continuous learning and a commitment to excellence in every project I undertake.</p>
+             
+                <h3>Skills & Expertise</h3>
+                <div class="skills">
+                    <span class="skill">Strategic Planning</span>
+                    <span class="skill">Project Management</span>
+                    <span class="skill">Data Analysis</span>
+                    <span class="skill">Team Leadership</span>
+                    <span class="skill">Communication</span>
+                    <span class="skill">Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-container">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Senior Project Manager</h3>
+                    <span class="experience-date">2020 - Present</span>
+                </div>
+                <h4 class="experience-company">Innovative Solutions Inc.</h4>
+                <p class="experience-description">Lead cross-functional teams to deliver complex projects on time and within budget. Developed strategic initiatives that increased operational efficiency by 30% and improved client satisfaction scores.</p>
+            </div>
+         
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Project Coordinator</h3>
+                    <span class="experience-date">2016 - 2020</span>
+                </div>
+                <h4 class="experience-company">TechForward Corporation</h4>
+                <p class="experience-description">Managed key client accounts and implemented process improvements that reduced delivery times by 25%. Mentored junior team members and contributed to the development of company-wide best practices.</p>
+            </div>
+         
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 class="experience-title">Business Analyst</h3>
+                    <span class="experience-date">2013 - 2016</span>
+                </div>
+                <h4 class="experience-company">StartUp Ventures</h4>
+                <p class="experience-description">Supported senior management in daily operations and special projects. Developed foundational skills in project coordination, data analysis, and client communications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Project 1">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Digital Transformation Initiative</h3>
+                    <p class="project-description">Led the digital transformation of legacy systems, resulting in improved efficiency and user satisfaction across multiple departments.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Digital Strategy</span>
+                        <span class="project-tag">Change Management</span>
+                        <span class="project-tag">Technology Implementation</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+         
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Project 2">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Client Analytics Platform</h3>
+                    <p class="project-description">Developed a custom analytics platform that provided actionable insights, leading to a 40% increase in client retention.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Data Visualization</span>
+                        <span class="project-tag">Business Intelligence</span>
+                        <span class="project-tag">Dashboard Design</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+         
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Project 3">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Community Mentorship Program</h3>
+                    <p class="project-description">Founded and managed a mentorship program that has helped over 200 professionals advance their careers through personalized guidance.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Leadership</span>
+                        <span class="project-tag">Professional Development</span>
+                        <span class="project-tag">Community Building</span>
+                    </div>
+                    <div class="project-links">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div class="contact-text">
+                            <a href="mailto:uzmasarfraz434@gmail.com">uzmasarfraz434@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div class="contact-text">
+                            <a href="https://wa.me/923001234567" target="_blank">+92 300 1234567</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div class="contact-text">
+                            <a href="https://www.google.com/maps/place/Islamabad,+Pakistan/@33.6164953,72.8057564,11z/data=!3m1!4b1!4m6!3m5!1s0x38dfbfd07891722f:0x6059515c3bdb02b6!8m2!3d33.6844202!4d73.0478848!16zL20vMGQ5NHc?entry=ttu" target="_blank">Islamabad, Pakistan</a>
+                        </div>
+                    </div>
+                 
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+             
+                <div class="contact-card">
+                    <h3>Availability</h3>
+                    <p>I'm currently available for consulting projects and speaking engagements. Feel free to reach out with any inquiries or opportunities.</p>
+                    <p>Response time is typically within 24-48 hours for initial contact.</p>
+                </div>
+            </div>
+         
+            <div class="contact-form">
+                <form action="https://formsubmit.co/uzmasarfraz434@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New contact from portfolio website">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                    <input type="hidden" name="_captcha" value="false">
+                 
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Uzma Sarfraz</div>
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Home</a>
+                <a href="#about" class="footer-link">About</a>
+                <a href="#experience" class="footer-link">Experience</a>
+                <a href="#projects" class="footer-link">Projects</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2025 | All rights reserved.</p>
+            <p class="developer-credit">Developed by <a href="https://www.aliahtisham.pro" target="_blank">Ali Ahtisham</a></p>
+        </div>
+    </footer>
+
+    <!-- Enhanced JavaScript with Touch Support -->
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+     
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme') ||
+                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+     
+        // Apply the saved theme
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            themeText.textContent = 'Light Mode';
+        }
+     
+        // Toggle theme with touch feedback
+        themeToggle.addEventListener('click', () => {
+            themeToggle.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 100);
+         
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+         
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                themeText.textContent = 'Dark Mode';
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeText.textContent = 'Light Mode';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+     
+        // Mobile Navigation with Touch Feedback
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+     
+        hamburger.addEventListener('click', () => {
+            hamburger.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                hamburger.style.transform = '';
+            }, 100);
+         
+            mobileNav.classList.toggle('active');
+            hamburger.innerHTML = mobileNav.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+         
+            // Toggle body scroll when mobile nav is open
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+     
+        // Close mobile menu when clicking a link with touch feedback
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                link.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    link.style.transform = '';
+                }, 100);
+             
+                mobileNav.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = '';
+            });
+        });
+     
+        // Enhanced Smooth scrolling for anchor links with touch support
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+             
+                // Touch feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+             
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+             
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+     
+        // Enhanced Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+     
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+     
+        // Observe all animated elements
+        document.querySelectorAll('.section-title, .about-text, .experience-item, .project-card, .contact-info, .contact-form').forEach(element => {
+            observer.observe(element);
+        });
+     
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                // You can add form validation here if needed
+                // FormSubmit.co will handle the actual submission
+            });
+        }
+     
+        // Enhanced touch feedback for all interactive elements
+        document.querySelectorAll('.btn, .submit-btn, .skill, .project-card, .experience-item, .contact-card, .social-link').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.96)';
+            }, { passive: true });
+         
+            element.addEventListener('touchend', function() {
+                this.style.transform = '';
+            }, { passive: true });
+        });
+     
+        // Card hover effects for touch devices
+        function handleTouchHover() {
+            if ('ontouchstart' in window) {
+                document.querySelectorAll('.project-card, .experience-item, .contact-card').forEach(card => {
+                    let isTouched = false;
+                 
+                    card.addEventListener('touchstart', function() {
+                        isTouched = true;
+                        this.classList.add('hover-effect');
+                    }, { passive: true });
+                 
+                    card.addEventListener('touchend', function() {
+                        if (isTouched) {
+                            this.classList.remove('hover-effect');
+                            isTouched = false;
+                        }
+                    }, { passive: true });
+                });
+            }
+        }
+     
+        // Initialize touch effects
+        handleTouchHover();
+    </script>
+</body>
+</html>
